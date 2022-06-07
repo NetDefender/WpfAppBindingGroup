@@ -1,0 +1,45 @@
+﻿<Window x:Class="WpfAppPerformance.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppPerformance"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance local:ViewModelMain}"
+        Title="MainWindow" Height="450" Width="800"
+        Loaded="Window_Loaded"
+        Closed="Window_Closed"
+        Validation.Error="Window_Error">
+    <Window.BindingGroup>
+        <BindingGroup NotifyOnValidationError="True" x:Name="binding">
+        </BindingGroup>
+    </Window.BindingGroup>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="0" Grid.Row="0">Name: </TextBlock>
+        <TextBox Grid.Column="1" Grid.Row="0" Name="txtName" Text="{Binding Name, Mode=TwoWay
+            }"/>
+
+        <TextBlock Grid.Column="0" Grid.Row="1">Value: </TextBlock>
+        <TextBox Grid.Column="1" Grid.Row="1" Name="txtValue" Text="{Binding Value, Mode=TwoWay
+            }"/>
+
+        <Button Grid.Column="0" Grid.Row="2" IsDefault="True" Content="Save" Name="btoSave" Click="btoSave_Click" />
+        <Button Grid.Column="1" Grid.Row="2" Content="Reset" Name="btoReset" Click="btoReset_Click"  />
+        <TextBlock Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" >No Errors</TextBlock>
+        <TextBox Grid.Column="0" Grid.Row="4" Text="{Binding Child.Count}"></TextBox>
+        <Button Grid.Column="1" Grid.Row="4" Content="Change Child" Name="btoChangeChild" Click="btoChangeChild_Click" />
+    </Grid>
+</Window>
